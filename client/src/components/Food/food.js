@@ -5,10 +5,9 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom"
 import API from "../../utils/API";
 import Timer from "../../components/Timer";
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, ListItem
-} from 'reactstrap';
+import { Table } from 'reactstrap';
+
+
 class Food extends Component {
     state = {
         loggedIn: false,
@@ -104,7 +103,7 @@ class Food extends Component {
     //     if (this.state.locname && this.state.poc && this.state.pocphone && this.state.foodinfo && this.state.meals && this.state.pickup) {
     //         console.log("in the if")
     //         API.claimIt({
-                
+
     //             claimit: this.state.claimit
     //         })
     //             .then(res => this.loadFoods())
@@ -120,69 +119,85 @@ class Food extends Component {
                         <h4 id="userTitle">Welcome {this.state.user.username}</h4>
                         <div>
                             <Row>
-                                <Col lg>
-                                <h4>Food Upload</h4>
-                                <Form>
-                                    <FormGroup>
-                                        <Label for="locname">Location Name</Label>
-                                        <Input onChange={event => this.handleInput(event)} type="text" name="locname" id="locname" placeholder="Location Name" width="100" />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="poc">Point of Contact</Label>
-                                        <Input type="text" name="poc" id="poc" placeholder="Person of Contact" onChange={event => this.handleInput(event)} />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="pocphone">Contact's Phone</Label>
-                                        <Input type="text" name="pocphone" id="pocphone" placeholder="Phone Number" onChange={event => this.handleInput(event)} />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="foodinfo">Food Information</Label>
-                                        <Input type="text" name="foodinfo" id="foodinfo" placeholder="Food Information" onChange={event => this.handleInput(event)} />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="meals">Meals</Label>
-                                        <Input type="text" name="meals" id="meals" placeholder="Number of meals" onChange={event => this.handleInput(event)} />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for="pickup">Pick Up</Label>
-                                        <Input type="text" name="pickup" id="pickup" placeholder="Pick Up Instructions" onChange={event => this.handleInput(event)} />
-                                    </FormGroup>
-                                    <Button
-                                        className="loginBtn" disabled={!(this.state.locname && this.state.poc && this.state.pocphone && this.state.foodinfo && this.state.meals && this.state.pickup)}
-                                        onClick={(event) => this.handleUpload(event)} color="success" block>Food Upload</Button>
-                                </Form>
+                                <Col lg-4>
+                                    <h4>Food Upload</h4>
+                                    <Form>
+                                        <FormGroup>
+                                            <Label for="locname">Location Name</Label>
+                                            <Input onChange={event => this.handleInput(event)} type="text" name="locname" id="locname" placeholder="Location Name" width="100" />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="poc">Point of Contact</Label>
+                                            <Input type="text" name="poc" id="poc" placeholder="Person of Contact" onChange={event => this.handleInput(event)} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="pocphone">Contact's Phone</Label>
+                                            <Input type="text" name="pocphone" id="pocphone" placeholder="Phone Number" onChange={event => this.handleInput(event)} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="foodinfo">Food Information</Label>
+                                            <Input type="text" name="foodinfo" id="foodinfo" placeholder="Food Information" onChange={event => this.handleInput(event)} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="meals">Meals</Label>
+                                            <Input type="text" name="meals" id="meals" placeholder="Number of meals" onChange={event => this.handleInput(event)} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="pickup">Pick Up</Label>
+                                            <Input type="text" name="pickup" id="pickup" placeholder="Pick Up Instructions" onChange={event => this.handleInput(event)} />
+                                        </FormGroup>
+                                        <Button
+                                            className="loginBtn" disabled={!(this.state.locname && this.state.poc && this.state.pocphone && this.state.foodinfo && this.state.meals && this.state.pickup)}
+                                            onClick={(event) => this.handleUpload(event)} color="success" block>Food Upload</Button>
+                                    </Form>
                                 </Col>
-                                <Col lg>
+                                {/* <Col lg-8> */}
                                     <div>
                                         <h4>Claim It</h4>
                                         {this.state.foods.length ? (
                                             <div>
-                                            <Card>
-                                                <CardBody>
-                                                    {this.state.foods.map(food => {
-                                                        return (
-                                                            <CardText key={food._id}>
-                                                                <strong>
-                                                                    <Timer />
-                                                                    <br></br>
-                                                                    Point of Contact: {food.poc}<br></br> Phone#: {food.pocphone}<br></br>Food Info: {food.foodinfo}<br></br>Location: {food.locname}
-                                                                </strong>
-                                                                <Button 
-                                                                    onClick={(event) => this.handleUpload(event)} color="success" block>Claim It!</Button>
-                                                            </CardText>
-                                                        );
-                                                    })}
-                                                </CardBody>
-                                            </Card>
+                                                <table className="table table-striped" style={{ marginTop: 20 }}>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Location Name</th>
+                                                            <th>Point of Contact</th>
+                                                            <th>Contact Phone#</th>
+                                                            <th>Food Information</th>
+                                                            <th>Meals: </th>
+                                                            <th>Pickup</th>
+                                                            <th>Claim it</th>
+                                                        </tr>
+                                                        {this.state.foods.map(food => {
+                                                            return (
+                                                                <tr>
+
+                                                                <td>{food.locname}</td>
+                                                                <td>{food.poc}</td>
+                                                                <td>{food.pocphone}</td>
+                                                                <td>{food.foodinfo}</td>
+                                                                <td>{food.meals}</td>
+                                                                <td>{food.pickup}</td>
+                                                                <td key={food._id}><Timer/></td>
+                                                                
+                                                                
+                
+                                                                </tr>
+ 
+                                                            )
+                                                        })
+
+                                                        }
+
+                                                    </thead>
+                                                </table>
+
                                             </div>
                                         ) : (
                                                 <h3>No Results to Display</h3>
                                             )}
                                     </div>
-                                </Col>
-                                <Col>
-                                <h4>Already Claimed</h4>
-                                </Col>
+                                {/* </Col> */}
+                                
                             </Row>
                         </div>
                     </div>
