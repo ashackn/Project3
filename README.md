@@ -13,12 +13,7 @@ If food is not claimed within two hours the offering will be removed from the li
 # react-auth
 react app with passport authentication
 
-[Check out the app here](https://react-auth-simple.herokuapp.com/)
-
-# react-auth
-react app with passport authentication
-
-[Check out the app here](https://react-auth-simple.herokuapp.com/)
+[Check out the app here](https://sleepy-forest-79766.herokuapp.com/)
 
 ## Requirements
 * mongoDB
