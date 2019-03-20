@@ -8,6 +8,7 @@ import Timer from "../../components/Timer";
 import { Table } from 'reactstrap';
 
 
+
 class Food extends Component {
     state = {
         loggedIn: false,
@@ -115,12 +116,13 @@ class Food extends Component {
         return (
             <div className="profilePage">
                 {this.state.loggedIn ? (
-                    <div className="profileBox">
+                    <div className="profileBox bgimg">
+                
                         <h4 id="userTitle">Welcome {this.state.user.username}</h4>
                         <div>
                             <Row>
                                 <Col lg-4>
-                                    <h4>Food Upload</h4>
+                                    <h4 className="foodtext">Food Upload</h4>
                                     <Form>
                                         <FormGroup>
                                             <Label for="locname">Location Name</Label>
@@ -153,7 +155,7 @@ class Food extends Component {
                                 </Col>
                                 {/* <Col lg-8> */}
                                     <div>
-                                        <h4>Claim It</h4>
+                                        <h4 className= "claimtext">Claim It</h4>
                                         {this.state.foods.length ? (
                                             <div>
                                                 <table className="table table-striped" style={{ marginTop: 20 }}>

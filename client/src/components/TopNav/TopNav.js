@@ -47,7 +47,7 @@ export default class Navigation extends Component {
                 <Navbar className="navbar" light expand="md">
                     {/* <NavbarBrand href="/" className="titleFont"> SCKitchen</NavbarBrand> */}
                     <div className="sck">
-                        <img src={logo} width="75" height="75" /> Second Chance Kitchen
+                        <img src={logo} width="75" height="75" /> Second Chance Kitchen 
                     </div>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
