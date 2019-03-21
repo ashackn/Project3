@@ -45,7 +45,7 @@ class CountdownTimer extends React.Component {
   render() {
     return (
       <div>
-<button className="timerbtn" onClick={this.startTimer} color="success" > CLAIM IT</button>
+<button className="timerbtn btn btn-success" onClick={this.startTimer} > CLAIM IT</button>
        &nbsp; &nbsp; {this.state.time.h}:{this.state.time.m}:{this.state.time.s}
       </div>
     );
